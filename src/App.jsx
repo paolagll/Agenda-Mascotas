@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import Form from "./Components/Form";
+import Card from "./Components/Card";
+
+import "./styles.scss";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    name: "",
+    age: "",
+    gender: "",
+    date: "",
+    owner: ""
+  });
+  const [users, setUsers] = useState([]);
+
+  const handleInputChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  console.log('formulario', form);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const {name, age, gender, date, owner } = form
+    if (!name || !age || !date) {//agregar faltantes
+      setError('Falta un campo por llenar') 
+      return
+    }
+    fetch('http://localhost:8000/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: window.crypto.randomUUID(),
+        name,
+        age,
+        gender,
+        date,
+        owner
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    })
+
+    // setRegistrations([...registrations, form]);
+    setForm({ name: "", age: "", gender: "", date: "", owner: ""});
+  };
+
+  useEffect(() => {
+    const getPost = async () => {
+      const response = await fetch('http://localhost:8000/users')
+      const result = await response.json()
+      setUsers(result)
+    }
+    getPost()
+  }, [form])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Form
+        form={form}
+        handleFormSubmit={handleFormSubmit}
+        handleInputChange={handleInputChange}
+        error={error}
+      />
+      <section className="section">
+        {users.map((registration) => (
+          <Card
+            key={`${registration.date}${registration.name}`} 
+            registration={registration}
+          /> 
+        ))}
+      </section>
+    </div>
+  );
 }
 
-export default App
+export default App;
