@@ -11,7 +11,8 @@ Haga un formulario de cita de mascotas que contenga las sgtes caracteristicas:
 * Nombre del dueño
 * Boton para agendar la cita
  
-EL formulario debera tener las sgtes validaciones: 
+EL formulario debera tener las siguientes validaciones: 
+
 1. Mostrar error en cada campo (en caso de que exista) (aplicar estilos css)
 2. No agregar ninguna cita si existe un error en los campos o si estan vacios
  
