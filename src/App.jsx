@@ -5,72 +5,75 @@ import Card from "./Components/Card";
 import "./styles.scss";
 
 function App() {
-  const [error, setError] = useState('');
-  const [form, setForm] = useState({
+  const formInitialState = {
     name: "",
     age: "",
     gender: "",
     date: "",
     owner: ""
-  });
-  const [users, setUsers] = useState([]);
+  }
+  
+  const [ error, setError ] = useState({});
+  const [ form, setForm ] = useState(formInitialState);
+  const [ mascotas, setMascotas ] = useState([]);
 
   const handleInputChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [ e.target.name ]: e.target.value });
   };
 
-  console.log('formulario', form);
-
   const handleFormSubmit = (e) => {
+
     e.preventDefault();
-    const {name, age, gender, date, owner } = form
-    if (!name || !age || !date) {//agregar faltantes
-      setError('Falta un campo por llenar') 
-      return
+
+    for (const key in form) {
+      const element = form[ key ];
+  
+      if (!element) {
+        setError({ [ key ]: !element, error: 'Este campo es obligatorio' })
+        return
+      }
+     
     }
-    fetch('http://localhost:8000/users', {
+
+    fetch('http://localhost:8000/mascotas', {
       method: 'POST',
       body: JSON.stringify({
         id: window.crypto.randomUUID(),
-        name,
-        age,
-        gender,
-        date,
-        owner
+        ...form
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8'
       }
     })
 
-    // setRegistrations([...registrations, form]);
-    setForm({ name: "", age: "", gender: "", date: "", owner: ""});
+    setForm(formInitialState);
+    setError({})
   };
 
   useEffect(() => {
     const getPost = async () => {
-      const response = await fetch('http://localhost:8000/users')
+      const response = await fetch('http://localhost:8000/mascotas')
       const result = await response.json()
-      setUsers(result)
+      setMascotas(result)
     }
     getPost()
-  }, [form])
+  }, [ form ])
 
   return (
     <div className="app">
       <Form
-        form={form}
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        error={error}
+        form={ form }
+        handleFormSubmit={ handleFormSubmit }
+        handleInputChange={ handleInputChange }
+        error={ error }
       />
       <section className="section">
-        {users.map((registration) => (
+        { mascotas.map((registration) => (
           <Card
-            key={`${registration.date}${registration.name}`} 
-            registration={registration}
-          /> 
-        ))}
+            key={ registration.id }
+            registration={ registration }
+          />
+        )) }
       </section>
     </div>
   );

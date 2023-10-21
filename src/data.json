@@ -1,38 +1,5 @@
 {
-  "users": [
-    {
-      "id": "ac57e0a4-0c20-4ff0-9927-ada60d5a98f6",
-      "name": "Maria",
-      "age": "29",
-      "date": "2023-10-12"
-    },
-    {
-      "id": "aadc0437-e0a1-4ed1-a626-0591672faf8d",
-      "name": "Maria",
-      "age": "29",
-      "date": "2023-10-19",
-      "owner": "maria"
-    },
-    {
-      "id": "55279685-e4ec-4932-b627-236acb124776",
-      "name": "Maria",
-      "age": "29",
-      "date": "2023-10-12"
-    },
-    {
-      "id": "ca903504-abd5-4fe1-b9c5-b756fd32e627",
-      "name": "Maria",
-      "age": "29",
-      "date": "2023-10-27",
-      "owner": "maria"
-    },
-    {
-      "id": "edeb619b-bf68-4a4b-b7f9-9709fdf5b4c0",
-      "name": "Maria",
-      "age": "29",
-      "gender": "female",
-      "date": "2023-10-21",
-      "owner": "maria"
-    }
+  "mascotas": [
+   
   ]
 }

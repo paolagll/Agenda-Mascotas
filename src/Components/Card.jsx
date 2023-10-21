@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 const Card = ({ registration }) => {
     return (
         <div className="registration-card">
-            <h2>{registration.name}</h2>
-            <h4>{registration.age}</h4>
-            <h4>{registration.gender}</h4>
-            <h4>{registration.date}</h4>
-            <h4>{registration.owner}</h4>
+            <h4><strong>Dueño:</strong> { registration.owner }</h4>
+            <hr />
+            <ul>
+                <li><b>Nombre:</b> { registration.name }</li>
+                <li><b>Edad:</b> { registration.age }</li>
+                <li><b>Genero:</b> { registration.gender }</li>
+                <li><b>Día de la cita:</b> { registration.date }</li>
+            </ul>
         </div>
     )
 }
