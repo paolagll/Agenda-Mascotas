@@ -22,8 +22,8 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
             <select name="gender" id="gender" value={ form.gender } onChange={ handleInputChange }>
                 {/* Mejorar el onChange */ }
                 <option value="">-- Seleccione --</option>
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
             </select>
             { error.gender && <p className="error">{ error.error }</p> }
             <input

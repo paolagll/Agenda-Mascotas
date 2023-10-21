@@ -24,6 +24,7 @@ function App() {
   const handleFormSubmit = (e) => {
 
     e.preventDefault();
+    const currentDate = new Date();
 
     for (const key in form) {
       const element = form[ key ];
@@ -33,6 +34,13 @@ function App() {
         return
       }
      
+    }
+
+    const enteredDate = new Date(form.date);
+
+    if (enteredDate <= currentDate) {
+      setError({ date: true, error: 'La fecha debe ser posterior a la actual' });
+      return;
     }
 
     fetch('http://localhost:8000/mascotas', {
