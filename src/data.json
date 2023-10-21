@@ -1,5 +1,72 @@
 {
   "mascotas": [
-   
+    {
+      "id": "bf2836ff-8d21-4886-bc87-a5820c408f4f",
+      "name": "Nala",
+      "age": "1",
+      "gender": "masculino",
+      "date": "2020-02-02",
+      "owner": "Pao"
+    },
+    {
+      "id": "b4f3b070-a3fa-4bb9-9af0-64297a1c093b",
+      "name": "Kira",
+      "age": "4",
+      "gender": "femenino",
+      "date": "2018-06-05",
+      "owner": "Pao"
+    },
+    {
+      "id": "29c54949-8820-43b5-8f41-a93567ac8859",
+      "name": "Kylo",
+      "age": "2",
+      "gender": "Masculino",
+      "date": "1916-12-08",
+      "owner": "Chris"
+    },
+    {
+      "id": "12bfba94-aa9c-4e8b-906f-51bc203edf5e",
+      "name": "Kiro",
+      "age": "2",
+      "gender": "Masculino",
+      "date": "2024-02-02",
+      "owner": "Nico"
+    },
+    {
+      "id": "cb73b4ae-9f5f-44ce-ad47-78e1da7e61ad",
+      "name": "Lila",
+      "ageYears": "1",
+      "ageMonths": "0",
+      "gender": "Femenino",
+      "date": "2024-03-03",
+      "owner": "Yo"
+    },
+    {
+      "id": "107919de-6c2e-4f63-b414-427b1aa95588",
+      "name": "Luna",
+      "ageYears": "0",
+      "ageMonths": "3",
+      "gender": "Femenino",
+      "date": "2024-05-04",
+      "owner": "Pilar"
+    },
+    {
+      "id": "af8ee662-d40f-4809-a57f-4aebbe0e96ca",
+      "name": "Nemo",
+      "ageYears": "1",
+      "ageMonths": "0",
+      "gender": "Masculino",
+      "date": "2024-10-10",
+      "owner": "Federico"
+    },
+    {
+      "id": "2af72357-38e8-43df-bdf0-d67b9b5905b7",
+      "name": "Spike",
+      "ageYears": "1",
+      "ageMonths": "0",
+      "gender": "Femenino",
+      "date": "2024-02-10",
+      "owner": "John"
+    }
   ]
 }

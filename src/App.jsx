@@ -7,7 +7,8 @@ import "./styles.scss";
 function App() {
   const formInitialState = {
     name: "",
-    age: "",
+    ageYears: "",
+    ageMonths: "",
     gender: "",
     date: "",
     owner: ""
@@ -43,6 +44,14 @@ function App() {
       return;
     }
 
+    const ageYears = parseInt(form.ageYears, 10) || 0;
+    const ageMonths = parseInt(form.ageMonths, 10) || 0;
+  
+    if (ageYears <= 0 && ageMonths <= 0) {
+      setError({ ageYears: true, error: 'La edad debe ser mayor a 0' });
+      return;
+    }
+
     fetch('http://localhost:8000/mascotas', {
       method: 'POST',
       body: JSON.stringify({
@@ -69,12 +78,14 @@ function App() {
 
   return (
     <div className="app">
+      <h1>Crear tu cita</h1>
       <Form
         form={ form }
         handleFormSubmit={ handleFormSubmit }
         handleInputChange={ handleInputChange }
         error={ error }
       />
+      <h2>Citas Creadas</h2>
       <section className="section">
         { mascotas.map((registration) => (
           <Card
