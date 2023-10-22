@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
     return (
         <form className="form-card" onSubmit={handleFormSubmit}>
+            <img src='../../public/perro y gato.avif' alt='Perro y gato' />
+
+            <section className="form-section">
+            <h1>Crea tu cita</h1>
             <input
                 type="text"
                 name="name"
@@ -11,7 +15,7 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
                 onChange={handleInputChange}
             />
             {error.name && <p className="error">{error.error}</p>}
-            <section>
+            <section className="edad">
                 <h5>Edad:</h5>
                 <input
                     type="number"
@@ -31,7 +35,7 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
                 />
                 {error.ageMonths && <p className="error">{error.error}</p>}
             </section>
-            <div>
+            <div className="genero">
                 <input
                     type="radio"
                     id="masculino"
@@ -70,6 +74,7 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
             />
             {error.owner && <p className="error">{error.error}</p>}
             <button type="submit">Agendar cita</button>
+            </section>
         </form>
     )
 }

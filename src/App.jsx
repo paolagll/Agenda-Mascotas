@@ -78,7 +78,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Crear tu cita</h1>
+      
       <Form
         form={ form }
         handleFormSubmit={ handleFormSubmit }
