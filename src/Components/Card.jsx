@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const Card = ({ registration }) => {
+    console.log(registration)
     return (
         <div className="registration-card">
             <h4><strong>Dueño:</strong> {registration.owner}</h4>
@@ -18,10 +19,8 @@ const Card = ({ registration }) => {
 Card.propTypes = {
     registration: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        age: PropTypes.shape({
-            years: PropTypes.number,
-            months: PropTypes.number,
-        }).isRequired,
+        ageYears: PropTypes.string.isRequired,
+        ageMonths: PropTypes.string.isRequired,
         gender: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         owner: PropTypes.string.isRequired,

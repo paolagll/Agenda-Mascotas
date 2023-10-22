@@ -13,7 +13,7 @@ function App() {
     date: "",
     owner: ""
   }
-  
+
   const [ error, setError ] = useState({});
   const [ form, setForm ] = useState(formInitialState);
   const [ mascotas, setMascotas ] = useState([]);
@@ -25,28 +25,32 @@ function App() {
   const handleFormSubmit = (e) => {
 
     e.preventDefault();
-    const currentDate = new Date();
 
     for (const key in form) {
       const element = form[ key ];
-  
+
       if (!element) {
         setError({ [ key ]: !element, error: 'Este campo es obligatorio' })
         return
       }
-     
+
     }
 
-    const enteredDate = new Date(form.date);
-
-    if (enteredDate <= currentDate) {
+    const enteredDate = new Date(form.date)
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    
+    const currentDateString = currentDate.toISOString().split('T')[ 0 ];
+    const enteredDateString = enteredDate.toISOString().split('T')[ 0 ];
+  
+    if (enteredDateString <= currentDateString) {
       setError({ date: true, error: 'La fecha debe ser posterior a la actual' });
       return;
     }
 
     const ageYears = parseInt(form.ageYears, 10) || 0;
     const ageMonths = parseInt(form.ageMonths, 10) || 0;
-  
+
     if (ageYears <= 0 && ageMonths <= 0) {
       setError({ ageYears: true, error: 'La edad debe ser mayor a 0' });
       return;
@@ -78,7 +82,7 @@ function App() {
 
   return (
     <div className="app">
-      
+
       <Form
         form={ form }
         handleFormSubmit={ handleFormSubmit }

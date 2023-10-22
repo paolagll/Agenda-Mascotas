@@ -22,7 +22,8 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
                     name="ageYears"
                     placeholder="Años"
                     value={form.ageYears}
-                    onChange={handleInputChange}
+                        onChange={ handleInputChange }
+                        min={0}
                 />
                 {error.ageYears && <p className="error">{error.error}</p>}
 
@@ -31,7 +32,9 @@ const Form = ({ form, handleFormSubmit, handleInputChange, error }) => {
                     name="ageMonths"
                     placeholder="Meses"
                     value={form.ageMonths}
-                    onChange={handleInputChange}
+                        onChange={ handleInputChange }
+                        min={ 0 }
+                        max={11}
                 />
                 {error.ageMonths && <p className="error">{error.error}</p>}
             </section>
