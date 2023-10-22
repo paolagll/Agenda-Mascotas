@@ -27,10 +27,4 @@ Card.propTypes = {
     }),
 };
 
-Card.defaultProps = {
-    registration: {
-        age: "20"
-    }
-}
-
 export default Card;
